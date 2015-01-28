@@ -11,8 +11,8 @@ ignores:
   - "*~"
 
 env:
-  DJANGO_SETTINGS_MODULE: reclama.settings.dev
-  PIP_REQUIREMENTS_FILE: requirements/dev.txt
+  DJANGO_SETTINGS_MODULE: reclama.settings.stage
+  PIP_REQUIREMENTS_FILE: requirements/stage.txt
 
 requirements:
   pypm:

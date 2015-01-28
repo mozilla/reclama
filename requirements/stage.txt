@@ -1,0 +1,2 @@
+# Stage dependencies go here
+-r base.txt
