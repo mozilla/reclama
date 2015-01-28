@@ -1,0 +1,4 @@
+# Local development dependencies go here
+-r base.txt
+
+factory_boy==2.4.1

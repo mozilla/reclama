@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <title>Mozilla Bug Sprints</title>
+{% endblock %}
+
+{% block content %}
+  <hgroup id="main-feature" class="center">
+    <h2>Select event to view bugs.</h2>
+  </hgroup>
+  {% for event in events %}
+    <a href="{% url 'event' event.slug %}">
+      <div class="billboard event-listing">
+        <h1>{{ event.name }}</h1>
+        <span class="bugs-counter">
+          {{ event.bug_count }} bug{{ event.bug_count|pluralize }}
+        </span>
+      </div>
+    </a>
+  {% endfor %}
+{% endblock %}

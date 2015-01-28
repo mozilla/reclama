@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <title>Mozilla Bug Sprints - {{ bug }}</title>
+{% endblock %}
+
+{% block breadcrumb %}
+  <nav class="breadcrumbs">
+    <a href="/">Events</a>
+    <span>{{ event.name }}</span>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  {% for b in bugs %}
+    <div class="container questions-container">
+      <div class="billboard question asked">
+        <div class="row">
+          <div class="bug-text">
+            <h3>{{ b.number }}</h3>
+            <div>
+              <a href="{{ b.bug_url }}" target="_blank">
+                <span id="b{{ b.number }}"></span>
+              </a>
+            </div>
+          </div>
+          <div class="bug-assigned">
+            {% if assigned %}
+              Assigned
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
+
+{% block js %}
+  <script>
+    function get_bug(number) {
+        $.ajax({
+            url: "https://bugzilla.mozilla.org/rest/bug/" + number,
+            dataType: "json",
+        }).done(function(data) {
+            var summary = data.bugs[0]['summary'];
+            var bug_summary = "#b" + number;
+            $(bug_summary).html(summary);
+        });
+    }
+
+    {% for b in bugs %}
+      get_bug({{ b.number }});
+    {% endfor %}
+  </script>
+{% endblock %}

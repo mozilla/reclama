@@ -1,0 +1,26 @@
+reclama/settings/stage.py
+
+# Python
+*.py[cod]
+env/
+.env
+
+# Tests
+.coverage
+.cache
+
+# Vim
+*~
+*.swp
+*.swo
+
+# Sqlite
+*.db
+*.sqlite
+*.sqlite3
+
+# Media
+/media/
+
+# Production static
+/static/
