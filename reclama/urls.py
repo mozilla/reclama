@@ -8,7 +8,4 @@ urlpatterns = patterns('',
 
     # Admin
     url(r'^admin/', include(admin.site.urls)),
-
-    # Auth
-    url(r'', include('django_browserid.urls')),
 )

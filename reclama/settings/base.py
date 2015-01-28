@@ -19,8 +19,6 @@ INSTALLED_APPS = [
     'constance',
     'constance.backends.database',
 
-    # Auth
-    'django_browserid',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -86,11 +84,7 @@ CACHES = {
 # Auth
 AUTHENTICATION_BACKENDS = (
    'django.contrib.auth.backends.ModelBackend',
-   'django_browserid.auth.BrowserIDBackend',
 )
-LOGIN_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL_FAILURE = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 # Dynamic settings (use admin interface to change them)
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
