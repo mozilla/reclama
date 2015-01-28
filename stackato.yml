@@ -1,0 +1,37 @@
+name: reclama
+
+url:
+  - reclama.paas.allizom.org
+
+ignores:
+  - ".git"
+  - "*.pyc"
+  - "*.pyo"
+  - "*.swp"
+  - "*~"
+
+env:
+  DJANGO_SETTINGS_MODULE: reclama.settings.dev
+  PIP_REQUIREMENTS_FILE: requirements/dev.txt
+
+requirements:
+  pypm:
+    - mysql-python
+
+services:
+  mysql-${name}: mysql
+
+mem: 128M
+
+processes:
+    web: $STACKATO_UWSGI --static-map /static=$HOME/reclama/static/
+
+hooks:
+  post-staging:
+    - python manage.py migrate --noinput
+    - python manage.py collectstatic --noinput
+
+framework:
+  type: python
+  start-file: reclama/wsgi.py
+  runtime: python27
