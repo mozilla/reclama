@@ -4,6 +4,9 @@
 {% block title %}
     - {{ event.name }}
 {% endblock %}
+
+{% block loading %}
+  <span id="loading">&nbsp;<img src="{% static 'img/ajax-loader.gif' %}" /></span>
 {% endblock %}
 
 {% block breadcrumb %}
@@ -39,6 +42,11 @@
 
 {% block js %}
   <script>
+
+    $(document).ajaxStart(function () {
+        $("#loading").show();
+    });
+
     function get_bug(number) {
         $.ajax({
             url: "https://bugzilla.mozilla.org/rest/bug/" + number,
@@ -53,5 +61,9 @@
     {% for b in bugs %}
       get_bug({{ b.number }});
     {% endfor %}
+
+    $(document).ajaxStop(function () {
+        $("#loading").hide();
+    });
   </script>
 {% endblock %}

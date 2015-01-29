@@ -240,3 +240,7 @@
 .bug-assigned {
     padding: 0px;
 }
+
+#loading {
+    display: none;
+}
