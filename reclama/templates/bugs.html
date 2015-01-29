@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{% block head %}
-  <title>Mozilla Bug Sprints - {{ bug }}</title>
+{% block title %}
+    - {{ event.name }}
+{% endblock %}
 {% endblock %}
 
 {% block breadcrumb %}
