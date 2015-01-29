@@ -22,17 +22,17 @@
       <div class="billboard question asked">
         <div class="row">
           <div class="bug-text">
-            <h3>{{ b.number }}</h3>
-            <div>
-              <a href="{{ b.bug_url }}" target="_blank">
-                <span id="b{{ b.number }}"></span>
-              </a>
+            <div class="bug-number">
+              #{{ b.number }}</a>
+              <span id="p{{ b.number }}"></span>
             </div>
+            <h3>
+            <a href="{{ b.bug_url }}" target="_blank" class="bug-title" id="b{{ b.number }}"></a>
+            </h3>
+            <div id="a{{ b.number }}" class="bug-assigned"></div>
           </div>
-          <div class="bug-assigned">
-            {% if assigned %}
-              Assigned
-            {% endif %}
+          <div class="bug-prize">
+            {{ b.prize }}
           </div>
         </div>
       </div>
@@ -52,9 +52,21 @@
             url: "https://bugzilla.mozilla.org/rest/bug/" + number,
             dataType: "json",
         }).done(function(data) {
-            var summary = data.bugs[0]['summary'];
             var bug_summary = "#b" + number;
+            var bug_assigned = "#a" + number;
+            var bug_product = "#p" + number;
+
+            var summary = data.bugs[0]['summary'];
+            var assigned = data.bugs[0]['assigned_to_detail']['id'];
+            var product = data.bugs[0]['product'];
+
             $(bug_summary).html(summary);
+            $(bug_product).html("[" + product + "]");
+            if (assigned == 1) {
+                $(bug_assigned).html("Assigned");
+            } else {
+                $(bug_assigned).html("Not assigned");
+            }
         });
     }
 

@@ -64,14 +64,10 @@
     text-decoration: none;
 }
 
-.bug-assigned {
-    float:right;
+.bug-prize {
     display:inline-block;
-    width: 12%;
-    vertical-align: top;
     text-align: center;
-    padding: 10px;
-    margin-top: -15px;
+    font-weight: bold;
 }
 
 .button:hover {
@@ -231,14 +227,6 @@
 }
 .ribbon-green:after {
   right: 0;
-}
-
-.bug-assigned .button {
-  margin-top: 3px;
-}
-
-.bug-assigned {
-    padding: 0px;
 }
 
 #loading {
