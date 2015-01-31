@@ -36,6 +36,12 @@
     float: left;
 }
 
+.event-text {
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
 .bugs-counter {
     float: right;
     color: #999;
@@ -44,9 +50,8 @@
 
 .bug {
     border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
-    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .bug-text {
@@ -55,11 +60,13 @@
     vertical-align: middle;
 }
 
-.bug-text a {
+.bug-text a,
+.event-text a {
     color: #67A7D0;
 }
 
-.bug-text a:hover {
+.bug-text a:hover,
+.event-text a:hover {
     color: black;
     text-decoration: none;
 }

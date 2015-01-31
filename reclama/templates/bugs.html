@@ -13,13 +13,16 @@
   <nav class="breadcrumbs">
     <a href="/">Events</a>:
     <span>{{ event.name }}</span>
+
   </nav>
 {% endblock %}
 
 {% block content %}
+  <div class="container"><div class="event-text">{{ event.text|safe }}</div></div>
+
   {% for b in bugs %}
-    <div class="container questions-container">
-      <div class="billboard question asked">
+    <div class="container">
+      <div class="billboard bug">
         <div class="row">
           <div class="bug-text">
             <div class="bug-number">
@@ -32,7 +35,7 @@
             <div id="a{{ b.number }}" class="bug-assigned"></div>
           </div>
           <div class="bug-prize">
-
+            {{ b.prize }}
           </div>
         </div>
       </div>

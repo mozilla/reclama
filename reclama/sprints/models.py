@@ -12,6 +12,7 @@ class Event(models.Model):
     link = models.CharField(max_length=400)
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User)
+    text = models.TextField(blank=True, null=True)
 
     def __unicode__(self):
         return self.name
