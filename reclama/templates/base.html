@@ -24,8 +24,8 @@
         <header id="masthead">
           <a href="https://www.mozilla.org/" id="tabzilla">Mozilla</a>
           <h2>
-            <a href="/"><img class="main-logo" src="{% static 'img/reclama.png' %}" alt="Bug Sprints"></a>
-            Mozilla Bug Sprints {% block loading %}{% endblock %}
+            <a href="/"><img class="main-logo" src="{% static 'img/BugSprint.png' %}" alt="Bug Sprints"></a>
+            {% block loading %}{% endblock %}
           </h2>
 
           {% if messages %}
@@ -54,16 +54,14 @@
 
           <div class="footer-logo">
               <a href="https://www.mozilla.org"><img src="{% static 'img/sandstone/footer-mozilla.png' %}" alt="mozilla"></a>
-              <div>An experiment brought to you by Participation Infrastructure Team</div>
           </div>
 
           <div class="footer-license">
+              <p>An experiment brought to you by Participation Infrastructure Team.
+                <a href="https://github.com/mozilla/reclama">Contribute to this app</a></p>
               <p>
                 Content available under a
                 <a href="https://www.mozilla.org/foundation/licensing/website-content.html">Creative Commons license</a>.
-              </p>
-              <p>
-                <a href="https://github.com/mozilla/reclama">Contribute to this app</a>
               </p>
           </div>
           <ul class="footer-nav">

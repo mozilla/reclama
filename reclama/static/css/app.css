@@ -1,3 +1,7 @@
+.sky #outer-wrapper {
+    background-color: #E5E8E6;
+}
+
 .sky a {
   color: white;
 }
@@ -17,6 +21,7 @@
 
 .main-logo {
     margin-top: 1%;
+    width: 220px;
 }
 
 #main-feature h2 {
