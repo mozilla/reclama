@@ -17,4 +17,5 @@ def event(request, slug):
     return render(request, 'bugs.html',
                   {'open': not event.archived,
                    'event': event,
+                   'bug_numbers': [bug.number for bug in bugs],
                    'bugs': bugs})
