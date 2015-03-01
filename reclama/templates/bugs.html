@@ -63,12 +63,12 @@
             var assigned = data.bugs[0]['assigned_to_detail']['id'];
             var product = data.bugs[0]['product'];
 
-            $(bug_summary).html(summary);
-            $(bug_product).html("[" + product + "]");
+            $(bug_summary).text(summary);
+            $(bug_product).text("[" + product + "]");
             if (assigned !== 1) {
-                $(bug_assigned).html("Assigned");
+                $(bug_assigned).text("Assigned");
             } else {
-                $(bug_assigned).html("Not assigned");
+                $(bug_assigned).text("Not assigned");
             }
         });
     }
