@@ -65,7 +65,7 @@
 
             $(bug_summary).html(summary);
             $(bug_product).html("[" + product + "]");
-            if (assigned == 1) {
+            if (assigned !== 1) {
                 $(bug_assigned).html("Assigned");
             } else {
                 $(bug_assigned).html("Not assigned");
