@@ -50,32 +50,38 @@
         $("#loading").show();
     });
 
-    function get_bug(number) {
+    function get_bugs(numbers) {
         $.ajax({
-            url: "https://bugzilla.mozilla.org/rest/bug/" + number,
+            url: "https://bugzilla.mozilla.org/rest/bug",
+            data: {
+              id: numbers,
+              include_fields: 'id,assigned_to,component,product,mentors,product,resolution,summary'
+            },
+            traditional: true,  // pass id=number several times
             dataType: "json",
         }).done(function(data) {
-            var bug_summary = "#b" + number;
-            var bug_assigned = "#a" + number;
-            var bug_product = "#p" + number;
+            $.each(data.bugs, function(i, bug) {
+                var number = bug.id
+                var bug_summary = "#b" + number;
+                var bug_assigned = "#a" + number;
+                var bug_product = "#p" + number;
 
-            var summary = data.bugs[0]['summary'];
-            var assigned = data.bugs[0]['assigned_to_detail']['id'];
-            var product = data.bugs[0]['product'];
+                var summary = bug.summary;
+                var assigned = bug.assigned_to_detail.id;
+                var product = bug.product;
 
-            $(bug_summary).html(summary);
-            $(bug_product).html("[" + product + "]");
-            if (assigned == 1) {
-                $(bug_assigned).html("Assigned");
-            } else {
-                $(bug_assigned).html("Not assigned");
-            }
+                $(bug_summary).text(summary);
+                $(bug_product).text("[" + product + "]");
+                if (assigned !== 1) {
+                    $(bug_assigned).text("Assigned");
+                } else {
+                    $(bug_assigned).text("Not assigned");
+                }
+            });
         });
     }
 
-    {% for b in bugs %}
-      get_bug({{ b.number }});
-    {% endfor %}
+    get_bugs([{{ bug_numbers|join:", " }}]);
 
     $(document).ajaxStop(function () {
         $("#loading").hide();
