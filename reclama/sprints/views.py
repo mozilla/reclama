@@ -12,7 +12,7 @@ def event(request, slug):
     """Render event bugs."""
     event = Event.objects.get(slug=slug)
 
-    bugs = Bug.objects.filter(event=event)
+    bugs = Bug.objects.filter(event=event).order_by('?')
 
     return render(request, 'bugs.html',
                   {'open': not event.archived,
