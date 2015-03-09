@@ -29,16 +29,17 @@ function get_bugs(numbers) {
             $(bug_product).text("[" + product + "]");
             if (assigned !== 1) {
                 $(bug_assigned).text("Assigned");
-                $(bug_assigned).parents(".billboard").addClass("assigned");
+                $(bug_assigned).addClass("assigned");
             } else {
-                $(bug_assigned).text("Not assigned");
+                $(bug_assigned).text("New");
             }
             if (status == "RESOLVED") {
-                $(bug_assigned).parents(".billboard").removeClass("assigned");
-                $(bug_assigned).parents(".billboard").addClass("resolved");
+                $(bug_assigned).removeClass("assigned");
+                $(bug_assigned).addClass("resolved");
                 $(bug_assigned).text("Resolved");
             }
-            $(bug_modified).text(" - Modified: " + modified);
+            $(bug_assigned).parents(".ribbon-wrapper").show();
+            $(bug_modified).text("Modified: " + modified);
         });
     });
 }
