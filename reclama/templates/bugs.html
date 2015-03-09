@@ -33,9 +33,11 @@
             <a href="{{ b.bug_url }}" target="_blank" class="bug-title" id="b{{ b.number }}"></a>
             </h3>
             <div id="a{{ b.number }}" class="bug-assigned"></div>
+            <div id="m{{ b.number }}" class="bug-modified"></div>
           </div>
-          <div class="bug-prize">
-            {{ b.prize }}
+          <div class="bug-prize"
+               title="If you have fixed this bug before the end of the event, please come by the Mozilla booth to pick up your prize.">
+            Prize: {{ b.prize }}
           </div>
         </div>
       </div>
@@ -44,47 +46,9 @@
 {% endblock %}
 
 {% block js %}
+  <script src="{% static 'js/libs/moment.min.js' %}"></script>
+  <script src="{% static 'js/bugs.js' %}"></script>
   <script>
-
-    $(document).ajaxStart(function () {
-        $("#loading").show();
-    });
-
-    function get_bugs(numbers) {
-        $.ajax({
-            url: "https://bugzilla.mozilla.org/rest/bug",
-            data: {
-              id: numbers,
-              include_fields: 'id,assigned_to,component,product,mentors,product,resolution,summary'
-            },
-            traditional: true,  // pass id=number several times
-            dataType: "json",
-        }).done(function(data) {
-            $.each(data.bugs, function(i, bug) {
-                var number = bug.id
-                var bug_summary = "#b" + number;
-                var bug_assigned = "#a" + number;
-                var bug_product = "#p" + number;
-
-                var summary = bug.summary;
-                var assigned = bug.assigned_to_detail.id;
-                var product = bug.product;
-
-                $(bug_summary).text(summary);
-                $(bug_product).text("[" + product + "]");
-                if (assigned !== 1) {
-                    $(bug_assigned).text("Assigned");
-                } else {
-                    $(bug_assigned).text("Not assigned");
-                }
-            });
-        });
-    }
-
     get_bugs([{{ bug_numbers|join:", " }}]);
-
-    $(document).ajaxStop(function () {
-        $("#loading").hide();
-    });
   </script>
 {% endblock %}
