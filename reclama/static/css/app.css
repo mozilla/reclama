@@ -54,7 +54,7 @@
 }
 
 .billboard {
-    box-shadow: none;
+    box-shadow: 2px 2px 5px 3px #ccc;
     border-bottom: none;
 }
 
@@ -66,8 +66,9 @@
 
 .bug-text {
     display: inline-block;
-    width: 75%;
+    width: 65%;
     vertical-align: middle;
+    padding-right: 10px;
 }
 
 .bug-text a,
@@ -87,17 +88,47 @@
     font-weight: bold;
 }
 
-.bug-assigned,
-.bug-modified {
-    display: inline;
-}
-
 .assigned {
-    background-color: lightgray;
+    background-color: gray !important;
 }
 
 .resolved {
-    background-color: #B8E9D4;
+    background-color: #AB1D1D !important;
+}
+
+.ribbon-wrapper {
+    width: 85px;
+    height: 88px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: none;
+}
+
+.ribbon {
+  text-align: center;
+  transform: rotate(45deg);
+  position: relative;
+  padding: 7px 0px;
+  right: 2px;
+  top: 13px;
+  width: 120px;
+  box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.3);
+  color: white;
+  background-color: green;
+
+  &:before, &:after {
+    content: "";
+    /* Colour of the triangle. To flip the effect, use border-bottom. */
+    border-top: 3px solid #ccc;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    position:absolute;
+    bottom: -3px /* +1 to compensate for the border */
+  }
+  &:before { left: 0; }
+  &:after { right: 0; }
 }
 
 .button:hover {
@@ -198,67 +229,14 @@
 
     .bug-text {
         display: block;
-        width: 95%;
+    }
+
+    .bug-prize {
+        margin-left: 60px;
     }
 
     .bug-assigned {
         display: block;
         width: 95%;
     }
-}
-
-/* Ribbon rules */
-.ribbon-wrapper-green {
-  width: 85px;
-  height: 88px;
-  overflow: hidden;
-  position: absolute;
-  top: -3px;
-  right: -3px;
-}
-
-.ribbon-green {
-  font: bold 12px 'Open Sans';
-  color: #333;
-  text-align: center;
-  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform:    rotate(45deg);
-  -ms-transform:     rotate(45deg);
-  -o-transform:      rotate(45deg);
-  position: relative;
-  padding: 7px 0;
-  left: -5px;
-  top: 15px;
-  width: 120px;
-  background-color: #BFDC7A;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
-  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
-  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
-  color: #6a6340;
-  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
-  -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
-  box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
-}
-
-.ribbon-green:before, .ribbon-green:after {
-  content: "";
-  border-top:   3px solid #6e8900;
-  border-left:  3px solid transparent;
-  border-right: 3px solid transparent;
-  position:absolute;
-  bottom: -3px;
-}
-
-.ribbon-green:before {
-  left: 0;
-}
-.ribbon-green:after {
-  right: 0;
-}
-
-#loading {
-    display: none;
 }

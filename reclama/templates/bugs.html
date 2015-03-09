@@ -23,22 +23,20 @@
   {% for b in bugs %}
     <div class="container">
       <div class="billboard bug">
-        <div class="row">
-          <div class="bug-text">
-            <div class="bug-number">
-              #{{ b.number }}</a>
-              <span id="p{{ b.number }}"></span>
-            </div>
-            <h3>
+        <div class="ribbon-wrapper"><div id="a{{ b.number }}" class="ribbon"></div></div>
+        <div class="bug-text">
+          <div class="bug-number">
+            #{{ b.number }}</a>
+            <span id="p{{ b.number }}"></span>
+          </div>
+          <h3>
             <a href="{{ b.bug_url }}" target="_blank" class="bug-title" id="b{{ b.number }}"></a>
-            </h3>
-            <div id="a{{ b.number }}" class="bug-assigned"></div>
-            <div id="m{{ b.number }}" class="bug-modified"></div>
-          </div>
-          <div class="bug-prize"
-               title="If you have fixed this bug before the end of the event, please come by the Mozilla booth to pick up your prize.">
-            Prize: {{ b.prize }}
-          </div>
+          </h3>
+          <div id="m{{ b.number }}" class="bug-modified"></div>
+        </div>
+        <div class="bug-prize"
+             title="If you have fixed this bug before the end of the event, please come by the Mozilla booth to pick up your prize.">
+          Prize: {{ b.prize }}
         </div>
       </div>
     </div>
