@@ -11,6 +11,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Apps
     'reclama.sprints',
@@ -85,6 +86,9 @@ CACHES = {
 AUTHENTICATION_BACKENDS = (
    'django.contrib.auth.backends.ModelBackend',
 )
+
+# Site
+SITE_ID = 1
 
 # Dynamic settings (use admin interface to change them)
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
