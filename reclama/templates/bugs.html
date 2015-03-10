@@ -5,6 +5,10 @@
     - {{ event.name }}
 {% endblock %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/bugs.css' %}" media="all">
+{% endblock %}
+
 {% block loading %}
   <span id="loading">&nbsp;<img src="{% static 'img/ajax-loader.gif' %}" /></span>
 {% endblock %}

@@ -8,4 +8,7 @@ urlpatterns = patterns('',
 
     # Admin
     url(r'^admin/', include(admin.site.urls)),
+
+    # Flatpages
+    url(r'^', include('django.contrib.flatpages.urls')),
 )
