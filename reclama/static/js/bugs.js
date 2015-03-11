@@ -2,7 +2,15 @@ $(document).ajaxStart(function () {
     $("#loading").show();
 });
 
+function unique(array) {
+    return $.grep(array, function(el, index) {
+        return index === $.inArray(el, array);
+    });
+}
+
 function get_bugs(numbers) {
+    var items = new Array();
+
     $.ajax({
         url: "https://bugzilla.mozilla.org/rest/bug",
         data: {
@@ -25,8 +33,11 @@ function get_bugs(numbers) {
             var modified = moment(bug.last_change_time).fromNow();
             var status = bug.status;
 
+            items.push(product);
+
             $(bug_summary).text(summary);
             $(bug_product).text("[" + product + "]");
+            $(bug_product).parents(".bug").addClass(product.replace(/\s/g, ''))
             if (assigned !== 1) {
                 $(bug_assigned).text("Assigned");
                 $(bug_assigned).addClass("assigned");
@@ -39,8 +50,22 @@ function get_bugs(numbers) {
                 $(bug_assigned).text("Resolved");
             }
             $(bug_assigned).parents(".ribbon-wrapper").show();
-            $(bug_modified).text("Modified: " + modified);
+            $(bug_modified).text("modified " + modified);
         });
+        products = unique(items);
+        $.each(products, function(index, product) {
+            $('<option>').val(product).text(product).appendTo('#product-selection');
+        });
+    });
+
+    $('#product-selection').change( function() {
+        var product = $(this).val();
+        if (product == "0") {
+            $(".bug").show();
+        } else {
+            $(".bug").hide();
+            $("." + product.replace(/\s/g, '')).show();
+        }
     });
 }
 
