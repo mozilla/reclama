@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+    - {{ flatpage.title }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <nav class="breadcrumbs">
+    <a href="/">Bug Sprints</a>:
+    <span>{{ flatpage.title }}</span>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div class="container flatpage-text">
+    {{ flatpage.content }}
+  </div>
+{% endblock %}

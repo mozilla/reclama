@@ -1,4 +1,6 @@
 {% load staticfiles %}
+{% load flatpages %}
+{% get_flatpages as flatpages %}
 <!doctype html>
 <html class="no-js" lang="en-US" dir="ltr">
   <head>
@@ -10,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/sandstone/sandstone.css' %}" media="all">
     <link rel="stylesheet" href="{% static 'css/app.css' %}" media="all">
     <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    {% block css %}{% endblock %}
 
     <!--[if lte IE 8]>
       <script src="{% static 'js/libs/html5shiv.js' %}"></script>
@@ -23,6 +26,19 @@
 
         <header id="masthead">
           <a href="https://www.mozilla.org/" id="tabzilla">Mozilla</a>
+
+          <nav id="nav-main" role="navigation">
+            <span class="toggle" role="button" aria-controls="nav-main-menu" aria-expanded="false" tabindex="0">Menu</span>
+            <ul id="nav-main-menu">
+              <li class="first"><a href="{% url 'home' %}">Events</a></li>
+              {% for page in flatpages %}
+                <li class="{% if forloop.last %}last{% endif %}">
+                  <a href="{{ page.url }}">{{ page.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+
           <h2>
             <a href="/"><img class="main-logo" src="{% static 'img/BugSprint.png' %}" alt="Bug Sprints"></a>
             {% block loading %}{% endblock %}
@@ -43,10 +59,10 @@
           {% endblock %}
         </header>
 
-        <div id="main-content">
-          {% block content %}
-          {% endblock %}
-        </div>
+        {% block content %}
+        {% endblock %}
+
+        <div id="push"></div>
       </div>
 
       <footer id="colophon">
