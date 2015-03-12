@@ -5,7 +5,6 @@ PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
 # Application definition
 INSTALLED_APPS = [
     # Django
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -17,10 +16,11 @@ INSTALLED_APPS = [
     # Apps
     'reclama.sprints',
 
-    # Config
+    # Config/Admin
     'constance',
     'constance.backends.database',
-
+    'grappelli',
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -91,6 +91,9 @@ AUTHENTICATION_BACKENDS = (
 
 # Site
 SITE_ID = 1
+
+# Admin
+GRAPPELLI_ADMIN_TITLE = 'Bug Sprints'
 
 # Dynamic settings (use admin interface to change them)
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
