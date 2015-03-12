@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     url(r'^', include('reclama.sprints.urls')),
 
     # Admin
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -3,9 +3,12 @@ django>=1.7,<1.8
 django-uuslug
 
 # Config
-django-constance==1.0
 django-picklefield==0.3.1
 django-dotenv==1.3.0
+
+# Admin
+django-constance==1.0
+django-grappelli==2.6.3
 
 # DB
 dj-database-url
