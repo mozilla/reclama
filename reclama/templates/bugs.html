@@ -17,12 +17,26 @@
   <nav class="breadcrumbs">
     <a href="/">Events</a>:
     <span>{{ event.name }}</span>
-
   </nav>
 {% endblock %}
 
 {% block content %}
-  <div class="container"><div class="event-text">{{ event.text|safe }}</div></div>
+  <div class="container">
+    <div class="event-text-mobile">{{ event.text|safe }}</div>
+  </div>
+
+  <div class="container">
+    <div class="event-text">{{ event.text|safe }}</div>
+    <div class="products">
+      <form action="" method="post">
+        <div class="select">
+          <select id="product-selection" name="product">
+            <option selected value="0">Everything</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
 
   {% for b in bugs %}
     <div class="container">
@@ -31,7 +45,7 @@
         <div class="bug-text">
           <div class="bug-number">
             #{{ b.number }}</a>
-            <span id="p{{ b.number }}"></span>
+            <span id="p{{ b.number }}" data-product=""></span>
           </div>
           <h3>
             <a href="{{ b.bug_url }}" target="_blank" class="bug-title" id="b{{ b.number }}"></a>
