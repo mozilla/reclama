@@ -2,7 +2,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
+
     # Base
     url(r'^', include('reclama.sprints.urls')),
 
