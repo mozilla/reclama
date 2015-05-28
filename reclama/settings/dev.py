@@ -1,5 +1,5 @@
 from os import getenv
-from base import *
+from base import *  # noqa
 
 
 # Security
