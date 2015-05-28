@@ -1,0 +1,22 @@
+db:
+  image: mysql:5.5
+  environment:
+    - MYSQL_DATABASE=reclama
+    - MYSQL_USER=reclama
+    - MYSQL_PASSWORD=reclama
+    - MYSQL_ROOT_PASSWORD=root
+
+web:
+  build: .
+  ports:
+    - 8000:8000
+  volumes:
+    - .:/code
+  links:
+    - db
+  command: ./bin/run-reclama.sh
+  environment:
+    - DJANGO_SETTINGS_MODULE=reclama.settings.dev
+    - DATABASE_URL=mysql://reclama:reclama@db_1:3306/reclama
+    - SECRET_KEY=changeme
+    - ALLOWED_HOSTS=*
