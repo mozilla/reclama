@@ -52,10 +52,12 @@
           </h3>
           <div id="m{{ b.number }}" class="bug-modified"></div>
         </div>
-        <div class="bug-prize"
-             title="If you have fixed this bug before the end of the event, please come by the Mozilla booth to pick up your prize.">
-          Prize: {{ b.prize }}
-        </div>
+        {% if b.prize %}
+          <div class="bug-prize"
+               title="If you have fixed this bug before the end of the event, please come by the Mozilla booth to pick up your prize.">
+            Prize: {{ b.prize }}
+          </div>
+        {% endif %}
       </div>
     </div>
   {% endfor %}

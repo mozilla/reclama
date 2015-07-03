@@ -42,7 +42,8 @@ class Bug(models.Model):
     """Bug model."""
     number = models.PositiveIntegerField()
     event = models.ManyToManyField(Event, related_name='bugs')
-    prize = models.ForeignKey(Prize, related_name='prizes')
+    prize = models.ForeignKey(Prize, related_name='prizes',
+                              null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
