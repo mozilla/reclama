@@ -5,7 +5,8 @@ from reclama.sprints.models import Event, Bug
 
 def home(request):
     events = Event.objects.filter(archived=False)
-    return render(request, 'index.html', {'events': events})
+    archived = Event.objects.filter(archived=True)
+    return render(request, 'index.html', {'events': events, 'archived': archived})
 
 
 def event(request, slug):

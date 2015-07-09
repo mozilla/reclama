@@ -73,6 +73,19 @@ body,
     display: none;
 }
 
+.archived {
+    color: gray;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gray;
+    font-size: 1.3em;
+    cursor:text;
+}
+
+.archived > h1 {
+    color: gray;
+}
+
 .products {
     padding: 0px;
     font-size: 1.2em;
