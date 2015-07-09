@@ -96,6 +96,11 @@ body,
     padding-bottom: 10px;
 }
 
+.nobugs {
+    text-align: center;
+    margin: 80px 0px;
+}
+
 .bug-text {
     display: inline-block;
     width: 65%;

@@ -60,6 +60,10 @@
         {% endif %}
       </div>
     </div>
+  {% empty %}
+    <div class="container bug nobugs">
+      <p>No bugs where found for this event.</p>
+    </div>
   {% endfor %}
 {% endblock %}
 
