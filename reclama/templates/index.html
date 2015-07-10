@@ -14,4 +14,18 @@
       </div>
     </a>
   {% endfor %}
+
+  {% if archived %}
+    <div class="archived">Archived events</div>
+
+    {% for event in archived %}
+      <div class="billboard event-listing archived">
+        <h1>{{ event.name }}</h1>
+        <span class="bugs-counter">
+          {{ event.bug_count }} bug{{ event.bug_count|pluralize }}
+        </span>
+      </div>
+    {% endfor %}
+  {% endif %}
+
 {% endblock %}
