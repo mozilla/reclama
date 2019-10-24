@@ -17,7 +17,7 @@ workon reclama
 pip install -r requirements/dev.txt
 ```
 
-Set your enviromental variables:
+Set your environmental variables:
 
 `cp .env-dist .env`
 
